@@ -21,6 +21,14 @@ public class Order {
         }
         return totalCost;
     }
+    public void mostrarInfo() {
+        System.out.println("Order ID: " + IdOrder);
+        System.out.println("Products in Order: ");
+        for (int i = 0; i < products.size(); i++) {
+            products.get(i).mostrarInfoProduct();
+        }
+        System.out.println("Total cost: " + totalCost());
+    }
 
     public int getIdOrder() {
         return IdOrder;

@@ -17,6 +17,7 @@ public class Main {
         Order.addProduct(product3);
         Order.addProduct(product4);
         Order.addProduct(product5);
-        System.out.println("Total cost: " + Order.totalCost());
+        Order.mostrarInfo();
     }
 }
+ 
