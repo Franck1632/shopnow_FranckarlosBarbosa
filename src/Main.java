@@ -56,11 +56,15 @@ public class Main {
                     i--;
                 }
             }
-            System.out.println("Su orden actual es: ");
+                        System.out.println("Su orden actual es: ");
             Order.mostrarInfoOrder();
-            System.out.println("¿Quiere hacer otro pedido? 1. Si 0. No");
-            option = sc.nextInt();
-
+            do {
+                System.out.println("¿Quiere hacer otro pedido? 1. Si 0. No");
+                option = sc.nextInt();
+                if (option != 0 && option != 1) {
+                    System.out.println("Opcion no valida, intente de nuevo.");
+                }
+            } while (option != 0 && option != 1);
         } while (option == 1);
         System.out.println("Gracias por su compra, vuelva pronto.");
         sc.close();
