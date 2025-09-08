@@ -1,23 +1,25 @@
 package MODEL;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 
 public class Order {
+
+    private Client client;
     private int IdOrder;
     private ArrayList<Product> products = new ArrayList<>();//No se mete en el constructor porque se inicializa vacio aca
     private LocalDateTime buyDate;
 
-
     public Order(int IdOrder, Client client) {
         this.IdOrder = IdOrder;
+        this.client = client;
         this.buyDate = LocalDateTime.now();
     }
 
     public void addProduct(Product newProduct) {
         products.add(newProduct);
     }
-
     public double totalCost() {
         double totalCost = 0;
         for (int i = 0; i < products.size(); i++) {
@@ -27,12 +29,19 @@ public class Order {
     }
     public void mostrarInfoOrder() {
         System.out.println("Order ID: " + IdOrder);
-        System.out.println("Buy date: " + buyDate);
         System.out.println("Products in Order: ");
         for (int i = 0; i < products.size(); i++) {
             products.get(i).mostrarInfoProduct();
         }
-        System.out.println("Total cost: " + totalCost() + "La fecha maxima de compra es: " + buyDate.plusHours(24));
+        System.out.println("Total cost: " + totalCost() + ", La fecha maxima de compra es: " + getBuyDate());
+    }
+    public ArrayList<Product> getProduct() {
+        return products;
+    }
+
+    public String getBuyDate() {
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("EEEE, dd 'de' MMMM yyyy HH:mm:ss");
+        return buyDate.format(formato);
     }
 
     public int getIdOrder() {
@@ -49,6 +58,17 @@ public class Order {
 
     public void setProducts(ArrayList<Product> products) {
         this.products = products;
+    }
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public void setBuyDate(LocalDateTime buyDate) {
+        this.buyDate = buyDate;
     }
 }
     

@@ -13,11 +13,11 @@ public class Client {
         System.out.println("Client information: " + name + ", client email: " + email);
     }
 
-    public String getNombre() {
+    public String getName() {
         return name;
     }
 
-    public void setNombre(String nombre) {
+    public void setName(String nombre) {
         this.name = nombre;
     }
 

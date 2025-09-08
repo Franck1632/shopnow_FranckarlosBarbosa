@@ -12,7 +12,7 @@ public class Product {
     }
 
     public void mostrarInfoProduct() {
-        System.out.println("Product name: " + nameProduct + ", Product cost: " + cost + " and Product ID: " + IdProduct);
+        System.out.println( "- " + nameProduct + ", cost: " + cost + " and Product ID: " + IdProduct);
     }
 
     public String getNameProduct() {
