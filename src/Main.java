@@ -53,6 +53,7 @@ public class Main {
                     System.out.println("Producto agregado a la orden.");
                 } else {
                     System.out.println("Producto no encontrado.");
+                    i--;
                 }
             }
             System.out.println("Su orden actual es: ");
