@@ -3,26 +3,17 @@ import java.util.Scanner;
 import MODEL.Client;
 import MODEL.Product;
 import MODEL.Order;
-import java.util.ArrayList;
+import java.util.List;
+import MODEL.ProductLoader;
 
 public class Main {
     public static void main(String[] args) {
+        // Cargar catalogo
+        List<Product> catalogo = ProductLoader.loadProducts("src/Catalogo.txt"); // Cargar catalogo
+        System.out.println(catalogo);
         Scanner sc = new Scanner(System.in);
         // Crear client
         Client client = new Client("Juan Perez", "juanperez@gmail.com");
-
-        // Crear productos
-        ArrayList<Product> catalogo = new ArrayList<>();
-        catalogo.add(new Product("Producto 1", 100.0, 123459));
-        catalogo.add(new Product("Producto 2", 200.0, 123456));
-        catalogo.add(new Product("Producto 3", 3000.2, 123457));
-        catalogo.add(new Product("Producto 4", 400.1, 123458));
-        catalogo.add(new Product("Producto 5", 50.9, 123450));
-        catalogo.add(new Product("Producto 6", 60.0, 123460));
-        catalogo.add(new Product("Producto 7", 70.0, 123461));
-        catalogo.add(new Product("Producto 8", 80.0, 123462));
-        catalogo.add(new Product("Producto 9", 50.5, 123463));
-        catalogo.add(new Product("Producto 10", 100.3, 123464));
         int option = 0;
         System.out.println("--------------------------------------------------------------------------------");
 
