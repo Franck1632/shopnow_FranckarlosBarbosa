@@ -5,9 +5,10 @@ import MODEL.DigitalWallet;
 import MODEL.Product;
 import MODEL.Order;
 import MODEL.PaymentMethot;
-
+import MODEL.Card;
 import java.util.List;
 import MODEL.ProductLoader;
+import MODEL.BanckTranferer;
 
 public class Main {
 
@@ -18,9 +19,10 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         // Crear client
         Client client = new Client("Juan Perez", "juanperez@gmail.com");
+
         PaymentMethot paymentMethod = new DigitalWallet(123456);
-        PaymentMethot paymentMethot1 = new BanckTranferer(123456, "Banco de America");
-        PaymentMethot paymentMethot2 = new Card(123, 123456789, null);
+        PaymentMethot paymentMethod2 = new Card((short) 123, 123456789, null);
+        PaymentMethot paymentMethod3 = new BanckTranferer(987654, "Banco Ejemplo");
 
         System.out.println("--------------------------------------------------------------------------------");
         int option = 0;
