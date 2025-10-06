@@ -1,25 +1,34 @@
 
 import java.util.Scanner;
 import MODEL.Client;
+import MODEL.DigitalWallet;
 import MODEL.Product;
 import MODEL.Order;
+import MODEL.PaymentMethot;
+
 import java.util.List;
 import MODEL.ProductLoader;
 
 public class Main {
+
     public static void main(String[] args) {
         // Cargar catalogo
-        List<Product> catalogo = ProductLoader.loadProducts("src/Catalogo.txt"); // Cargar catalogo
+        List<Product> catalogo = ProductLoader.loadProducts("C:\\Visualstudio\\Programación_1\\JAVA\\PROYECTO\\src\\Catalogo.txt"); // Cargar catalogo
         System.out.println(catalogo);
         Scanner sc = new Scanner(System.in);
         // Crear client
         Client client = new Client("Juan Perez", "juanperez@gmail.com");
+        PaymentMethot paymentMethod = new DigitalWallet(123456);
+        PaymentMethot paymentMethot1 = new BanckTranferer(123456, "Banco de America");
+        PaymentMethot paymentMethot2 = new Card(123, 123456789, null);
+
+        System.out.println("--------------------------------------------------------------------------------");
         int option = 0;
         System.out.println("--------------------------------------------------------------------------------");
 
         System.out.println("--------------------------------------------------------------------------------");
         do {
-            Order Order = new Order(1, client);
+            Order Order = new Order(1, client, paymentMethod);
             System.out.println("Bienvenido a la tienda");
             System.out.println("A continuación se le mostrata la lista de productos que tiene la tienda:");
             for (Product p : catalogo) {
