@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import MODEL.Order;
+import MODEL.PaymentMethot;
 import MODEL.Product;
 import java.util.List;
 import java.awt.BorderLayout;
@@ -34,7 +35,7 @@ public class ShopNowGUI extends JFrame {
         //Cargar productos
         catalog = ProductLoader.loadProducts("C:\\\\Visualstudio\\\\Programación_1\\\\JAVA\\\\PROYECTO\\\\src\\\\Catalogo.txt");
         client = new Client("Juan Perez", "juanperez@gmail.com");
-        order = new Order(1, client); 
+        order = new Order(1, client, null);
 
         //Panel de catalogo
         listModel = new DefaultListModel<>();
