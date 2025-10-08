@@ -12,7 +12,7 @@ public class BanckTranferer extends PaymentMethot {
 
     @Override
     public void ProcessPayment() {
-        System.out.println("Procesando pago con banco: " + banckName + " con numero de cuenta: " + accountNumber);
+        System.out.println("Procesando pago con banco: " + banckName + " ,con numero de cuenta: " + accountNumber);
     }
 
     public int getAccountNumber() {

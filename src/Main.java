@@ -68,23 +68,36 @@ public class Main {
                 System.out.println("3. Card.");
                 paymentOption = sc.nextInt();
                 if (paymentOption == 1) {
-                    paymentMethod = new BanckTranferer(987654, "Banco de Colombia");
+                    System.out.println("Ha elegido Banck Tranferer.");
+                    System.out.println("Ingrese su numero de cuenta: ");
+                    int cuenta = sc.nextInt();
+                    sc.nextLine();
+                    System.out.println("Ingrese su nombre del banco: ");
+                    String banco = sc.nextLine();
+                    paymentMethod = new BanckTranferer(cuenta, banco);
                     paymentMethod.ProcessPayment();
                     System.out.println("Proceso de pago finalizado.");
-                    System.out.println(
-                            "--------------------------------------------------------------------------------");
+                    System.out.println("--------------------------------------------------------------------------------");
+
                 } else if (paymentOption == 2) {
-                    paymentMethod = new DigitalWallet(123456);
+                    System.out.println("Ha elegido Digital Wallet.");
+                    System.out.println("Ingrese su ID de la billetera: ");
+                    int idBilletera = sc.nextInt();
+                    paymentMethod = new DigitalWallet(idBilletera);
                     paymentMethod.ProcessPayment();
                     System.out.println("Proceso de pago finalizado.");
-                    System.out.println(
-                            "--------------------------------------------------------------------------------");
+                    System.out.println("--------------------------------------------------------------------------------");
+
                 } else if (paymentOption == 3) {
-                    paymentMethod = new Card((short) 123, 123456789, null);
+                    System.out.println("Ha elegido Card.");
+                    System.out.println("Ingrese su CVV: ");
+                    short cvv = sc.nextShort();
+                    System.out.println("Ingrese su numero de tarjeta: ");
+                    int numero = sc.nextInt();
+                    paymentMethod = new Card((short) cvv, numero, null);
                     paymentMethod.ProcessPayment();
                     System.out.println("Proceso de pago finalizado.");
-                    System.out.println(
-                            "--------------------------------------------------------------------------------");
+                    System.out.println(  "--------------------------------------------------------------------------------");
                 } else {
                     System.out.println("Opcion no valida, intente de nuevo.");
 
