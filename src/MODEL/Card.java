@@ -5,13 +5,14 @@ import java.time.LocalDate;
 public class Card extends PaymentMethot {
     private short CVV;
     private int CardNumber;
-    private int lastFourDigits = CardNumber % 10000;
+    private int lastFourDigits;
     private LocalDate expirationDate;
 
     public Card(short CVV, int CardNumber, LocalDate expirationDate) {
         this.CVV = CVV;
         this.CardNumber = CardNumber;
         this.expirationDate = expirationDate;
+        this.lastFourDigits = CardNumber % 10000;
         super.PaymentMethot("Card", 0);
     }
     @Override

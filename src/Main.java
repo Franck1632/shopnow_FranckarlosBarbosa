@@ -14,15 +14,14 @@ public class Main {
 
     public static void main(String[] args) {
         // Cargar catalogo
-        List<Product> catalogo = ProductLoader.loadProducts("C:\\Visualstudio\\Programación_1\\JAVA\\PROYECTO\\src\\Catalogo.txt"); // Cargar catalogo
+        List<Product> catalogo = ProductLoader
+                .loadProducts("C:\\Visualstudio\\Programación_1\\JAVA\\PROYECTO\\src\\Catalogo.txt"); // Cargar catalogo
         System.out.println(catalogo);
         Scanner sc = new Scanner(System.in);
         // Crear client
         Client client = new Client("Juan Perez", "juanperez@gmail.com");
 
-        PaymentMethot paymentMethod = new DigitalWallet(123456);
-        PaymentMethot paymentMethod2 = new Card((short) 123, 123456789, null);
-        PaymentMethot paymentMethod3 = new BanckTranferer(987654, "Banco Ejemplo");
+        PaymentMethot paymentMethod = null;
 
         System.out.println("--------------------------------------------------------------------------------");
         int option = 0;
@@ -58,8 +57,40 @@ public class Main {
                     i--;
                 }
             }
-                        System.out.println("Su orden actual es: ");
-            Order.mostrarInfoOrder();
+            int paymentOption = 0;
+            do {
+                System.out.println("Su orden actual es: ");
+                Order.mostrarInfoOrder();
+                System.out.println("El total de su orden es: $" + Order.totalCost());
+                System.out.println("Elija el metodo de pago: ");
+                System.out.println("1. Banck Tranferer.");
+                System.out.println("2. Digital Wallet.");
+                System.out.println("3. Card.");
+                paymentOption = sc.nextInt();
+                if (paymentOption == 1) {
+                    paymentMethod = new BanckTranferer(987654, "Banco de Colombia");
+                    paymentMethod.ProcessPayment();
+                    System.out.println("Proceso de pago finalizado.");
+                    System.out.println(
+                            "--------------------------------------------------------------------------------");
+                } else if (paymentOption == 2) {
+                    paymentMethod = new DigitalWallet(123456);
+                    paymentMethod.ProcessPayment();
+                    System.out.println("Proceso de pago finalizado.");
+                    System.out.println(
+                            "--------------------------------------------------------------------------------");
+                } else if (paymentOption == 3) {
+                    paymentMethod = new Card((short) 123, 123456789, null);
+                    paymentMethod.ProcessPayment();
+                    System.out.println("Proceso de pago finalizado.");
+                    System.out.println(
+                            "--------------------------------------------------------------------------------");
+                } else {
+                    System.out.println("Opcion no valida, intente de nuevo.");
+
+                }
+            } while (paymentOption != 1 && paymentOption != 2 && paymentOption != 3);
+
             do {
                 System.out.println("¿Quiere hacer otro pedido? 1. Si 0. No");
                 option = sc.nextInt();
